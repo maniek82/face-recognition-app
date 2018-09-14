@@ -16,7 +16,7 @@ class Register extends Component {
     this.setState({name:event.target.value})
   }
   onEmailChange = (event) => {
-    this.setState({emal:event.target.value})
+    this.setState({email:event.target.value})
   }
 
   onPasswordChange = (event)=>{
@@ -36,17 +36,17 @@ class Register extends Component {
     })
     .then(response=> response.json())
     .then(user=> {
-      if(user) {
+      if(user.id) {
         this.props.loadUser(user)
         this.props.onRouteChange("home");
       }
     })
-    
+    .catch(err=> console.log("Please fill up the form ",err))
   }
 
 
    render() {
-    const{onRouteChange} = this.props;
+    
 
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-50-l mw6 center shadow-5">
